@@ -1,0 +1,8 @@
+#/bin/sh
+# AW0k6RA7vRbwVggj29EW1xZGaK56RIzlktbX65/OUpLLocGemNRX9swqvgX/O3/uxTjJaQYg5ne5axjOF0ah84u8+pey+5W81EZwMMtaySZ9vLOLYgOSoaO4um8eYTvii42tJ73rus+Z9uCX+hdRUJZl1gE29VeUgjJmd5dtcId
+# https://transfer.sh/WgQdM/truc.crypt
+curl --remote-name $1
+name=`ls *.crypt`
+newname=`echo $name | sed 's/.\{6\}$//'`
+openssl aes-256-cbc -d -k $2 -in $name -out $newname
+rm $name

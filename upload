@@ -1,0 +1,7 @@
+#/bin/sh
+pwd=`openssl rand -base64 128 | tr -d '\n' | rev |  cut -c 2-`
+openssl aes-256-cbc -k $pwd -in $1 -out $1'.crypt'
+url=`curl -T $1'.crypt' https://transfer.sh`
+echo ""
+echo download $url $pwd
+rm $1'.crypt'
